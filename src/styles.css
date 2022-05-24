@@ -1,1 +1,112 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@font-face {
+  font-family: "iransans";
+  src: url("assets/fonts/iran_sans.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: iransans !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.relative {
+  position: relative;
+}
+
+.full {
+  width: 100% !important ;
+}
+
+.half {
+  width: 50%;
+}
+
+.col3 {
+  width: 33.33%;
+}
+
+.col4 {
+  width: 25%;
+}
+
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.v-hidden {
+  visibility: hidden;
+}
+
+.none {
+  display: none;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+html,
+body {
+  background: #efefef;
+  font-family: iransans;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+input {
+  font-family: iransans;
+}
+
+.cdk-drag-dragging {
+  display: none;
+}
+
+.mat-simple-snackbar {
+  text-align: center;
+  display: inline !important;
+  font-size: 18px !important ;
+}
+
+.mat-simple-snackbar span {
+  font-family: iransans;
+}
+
+.snackbar {
+  text-align: center;
+  background: red;
+}
+
+.logo {
+  width: 300px;
+  margin: 70px 0;
+}

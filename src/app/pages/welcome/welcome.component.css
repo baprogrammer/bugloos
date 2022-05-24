@@ -1,0 +1,23 @@
+h1 {
+  color: #444;
+  margin-top: 80px;
+}
+
+img {
+  margin-top: 30px;
+  width: 200px;
+}
+
+.btn {
+  margin-top: 25px;
+  background: #324fa3;
+  display: inline-block;
+  padding: 10px 100px;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+a {
+  color: #fff;
+}
