@@ -1,0 +1,37 @@
+.sidebar {
+  width: 200px;
+  background: #fff;
+  min-height: 1000px;
+  direction: rtl;
+}
+
+.side-logo {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.side-logo img {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+.side-menu-item {
+  padding: 10px;
+  line-height: 30px;
+  border-bottom: 1px solid #efefef;
+}
+
+a {
+  color: #444;
+}
+
+.side-menu-item span {
+  font-size: 16px;
+}
+
+img {
+  width: 30px;
+  margin-left: 10px;
+}

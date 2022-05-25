@@ -1,0 +1,25 @@
+<app-side-navigation></app-side-navigation>
+
+<div class="content right">
+    <app-bread-crumb [routes]="routes" ></app-bread-crumb>
+
+    <div class="user-list rtl full right">
+        <table class="general-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>نام</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList" >
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td><a routerLink="/user/edit/{{user.id}}">ویرایش</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

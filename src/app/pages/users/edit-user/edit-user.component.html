@@ -1,0 +1,51 @@
+
+<app-side-navigation></app-side-navigation>
+
+<div class="content right">
+    <app-bread-crumb [routes]="routes" ></app-bread-crumb>
+
+    <div class="full right general-forms-container">
+        <div class="form-item right full">
+            <div class="form-item-label">
+                <span>نام و نام خانوادگی</span>
+            </div>
+            <div class="form-item-input">
+                <input type="text" [(ngModel)]="user.name" />
+            </div>
+        </div>
+        <div class="form-item right full">
+            <div class="form-item-label">
+                <span>رمز عبور </span>
+            </div>
+            <div class="form-item-input">
+                <input type="password" [(ngModel)]="user.password" />
+            </div>
+        </div>
+        <div class="form-item right full">
+            <div class="form-item-label">
+                <span>نقش</span>
+            </div>
+            <div class="form-item-input">
+                <select name="" id="" [(ngModel)]="user.role">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Guest">Guest</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="right general-button pointer" (click)="saveUser()" >
+            <span>ذخیره</span>
+        </div>
+        <div class="right red-button delete-user general-button pointer" (click)="deleteUser()" *ngIf="user.id != null " >
+            <span>حذف</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

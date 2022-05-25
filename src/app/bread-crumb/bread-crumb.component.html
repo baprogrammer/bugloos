@@ -1,0 +1,5 @@
+<div class="full right bread-crumb">
+    <div class="right bread-crumb-item" *ngFor="let route of routes">
+        <a [routerLink]="route.link" >{{route.title}}</a>
+    </div>
+</div>

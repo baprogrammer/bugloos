@@ -75,6 +75,10 @@ li {
   direction: rtl;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 html,
 body {
   background: #efefef;
@@ -109,4 +113,51 @@ input {
 .logo {
   width: 300px;
   margin: 70px 0;
+}
+
+.content {
+  width: calc(100% - 200px);
+}
+
+.general-forms-container {
+  padding: 20px;
+  direction: rtl;
+}
+
+.form-item-input {
+  margin-bottom: 15px;
+}
+
+.form-item-label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.form-item-input input,
+.form-item-input select {
+  border: 1px solid #ccc;
+  padding: 3px;
+  width: 250px;
+}
+
+.general-button {
+  background: #0089ff;
+  color: #fff;
+  padding: 7px 20px;
+  border-radius: 2px;
+  font-size: 18px;
+}
+
+.red-button {
+  background: #ff1800;
+}
+
+.general-table {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.general-table td {
+  padding: 5px 0;
 }

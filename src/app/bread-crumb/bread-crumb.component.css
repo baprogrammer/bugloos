@@ -1,0 +1,43 @@
+.bread-crumb {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.bread-crumb-item {
+  line-height: 60px;
+  font-size: 18px;
+  margin: 0 30px;
+  position: relative;
+}
+
+.bread-crumb-item:before {
+  content: "";
+  left: -48px;
+  top: 18px;
+  border: 12px solid transparent;
+  border-right-color: #ffffff;
+  position: absolute;
+  z-index: 20;
+}
+
+.bread-crumb-item::after {
+  content: "";
+  left: -50px;
+  top: 18px;
+  z-index: 10;
+  border: 12px solid transparent;
+  border-right-color: #5f5f5f;
+  position: absolute;
+}
+
+.bread-crumb-item:nth-last-child(1)::before {
+  display: none;
+}
+.bread-crumb-item:nth-last-child(1)::after {
+  display: none;
+}
+
+a {
+  color: #444;
+}
