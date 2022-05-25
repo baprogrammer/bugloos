@@ -1,0 +1,129 @@
+<div class="full right rtl">
+    
+    <div class="full right feild component" *ngIf="type == 'text' " >
+            <p>{{label}}</p>
+        <input type="text" class="full" readonly >
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'check' ">
+            <p>{{label}}</p>
+        <input type="checkbox" disabled>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'number' ">
+            <p>{{label}}</p>
+        <input type="number" class="full" readonly>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'image' ">
+            <p>{{label}}</p>
+            <div class="full right image-placeholder"></div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'editor' ">
+            <p>{{label}}</p>
+            <div class="editor">
+                <img src="assets/images/editor.png" class="full">
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'audio' ">
+            <p>{{label}}</p>
+            <div class="audio">
+                <img src="assets/images/audio.png" >
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'video' ">
+            <p>{{label}}</p>
+            <div class="video">
+                <img src="assets/images/video.png" >
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'file' ">
+            <p>{{label}}</p>
+            <div class="file">
+                <img src="assets/images/file.png" >
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'map' ">
+            <p>{{label}}</p>
+            <div class="file">
+                <img src="assets/images/map.png" >
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'textarea' ">
+            <p>{{label}}</p>
+            <div class="full right">
+                <textarea class="full" disabled></textarea>
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'radio' ">
+            <p>{{label}}</p>
+            <div class="full right">
+                <input type="radio" disabled>
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'select' ">
+            <p>{{label}}</p>
+            <div class="full right">
+                <select disabled>
+                    <option selected>انتخاب کنید</option>
+                </select>
+            </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'jdate' ">
+        <p>{{label}}</p>
+        <div class="full right">
+            <input type="date" disabled>
+        </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'color' ">
+        <p>{{label}}</p>
+        <div class="full right">
+            <input type="color" disabled>
+        </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'hidden' ">
+        <p>{{label}}</p>
+        <div class="full right">
+            <input type="text" value="hidden" disabled>
+        </div>
+    </div>
+
+
+    <div class="full right feild component" *ngIf="type == 'time' ">
+        <p>{{label}}</p>
+        <div class="full right">
+            <input type="time"  disabled>
+        </div>
+    </div>
+
+
+    <div class="full right feild component" *ngIf="type == 'dateTime' ">
+        <p>{{label}}</p>
+        <div class="half right">
+            <input type="date" disabled>
+        </div>
+        <div class="half left">
+            <input type="time" class="left"  disabled>
+        </div>
+    </div>
+
+    <div class="full right feild component" *ngIf="type == 'density' ">
+        <p>{{label}}</p>
+        <div class="full right">
+            <span class="density-circle"></span>
+            <input type="text"  disabled>
+        </div>
+    </div>
+
+</div>

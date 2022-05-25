@@ -12,6 +12,9 @@ import { SideNavigationComponent } from './components/side-navigation/side-navig
 import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { EditFormComponent } from './pages/forms/edit-form/edit-form.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { WidgetComponent } from './components/widget/widget.component';
 
 
 @NgModule({
@@ -21,14 +24,17 @@ import { MatTableModule } from '@angular/material/table';
     EditUserComponent,
     SideNavigationComponent,
     BreadCrumbComponent,
-    UserListComponent
+    UserListComponent,
+    EditFormComponent,
+    WidgetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule ,
-    MatTableModule
+    MatTableModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

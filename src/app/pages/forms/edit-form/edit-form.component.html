@@ -1,0 +1,60 @@
+<app-side-navigation></app-side-navigation>
+
+<div class="content right">
+    <app-bread-crumb [routes]="routes" ></app-bread-crumb>
+
+    <div class="full right edit-form">
+        <div class="widget-container right" cdkDropList #todoList="cdkDropList" [cdkDropListData]="widgets"
+        [cdkDropListConnectedTo]="[doneList ]">
+            <div class="full left widget" *ngFor="let widget of widgets" cdkDrag >
+                <div class="box full right">
+                    <span>{{widget.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-action-area" cdkDropList #doneList="cdkDropList" [cdkDropListData]="widgets"
+        [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="onDrop($event)">
+
+            <div class="full right widget-design">
+                <div class="full right widget-design-item" [ngClass]="component.size" *ngFor="let component of components" cdkDrag>
+                    <app-widget  [id]=component.id [label]="component.label" (click)="componentClick(component)"
+                    [type]="component.type" [size]="component.size" [name]="component.name"></app-widget>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="left widget-detail rtl">
+            <div class="widget-detail-item full right">
+                <label for="">عنوان</label>
+                <input type="text" [(ngModel)]="currentComponent.label" />
+            </div>
+            <div class="widget-detail-item full right">
+                <label for="">نام</label>
+                <input type="text" [(ngModel)]="currentComponent.name" />
+            </div>
+            <div class="widget-detail-item full right" *ngIf="currentComponent.isSelect">
+                <label for="">آپشن ها با , جدا شود</label>
+                <input type="text" [(ngModel)]="currentComponent.options" />
+            </div>
+            <div class="widget-detail-item full right">
+                <label for="">سایز</label>
+                <select class="full"  [(ngModel)]="currentComponent.size">
+                    <option value="full">100%</option>
+                    <option value="half">50%</option>
+                    <option value="col3">33%</option>
+                    <option value="col4">25%</option>
+                </select>
+            </div>
+            <div class="widget-detail-item full right delete-widget">
+                <div class="right red-button full center general-button pointer"  >
+                    <span>حذف</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
