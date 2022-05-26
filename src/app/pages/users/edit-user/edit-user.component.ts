@@ -81,7 +81,7 @@ export class EditUserComponent implements OnInit {
       localStorage.setItem('users',  JSON.stringify(this.userList));
       let showSuccessMsg = await this.swalService.success("کاربر با موفقیت حذف شد" , "");
       if(showSuccessMsg){
-        this.router.navigate(['/user/edit']);
+        this.router.navigate(['/users']);
       }
       
     }

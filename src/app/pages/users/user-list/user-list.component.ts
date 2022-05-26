@@ -15,8 +15,6 @@ export class UserListComponent implements OnInit {
  
   ngOnInit(): void {
     this.userList = JSON.parse(localStorage.getItem('users') || '[]')   ; 
-    console.log(this.userList);
-    
   }
 
 }

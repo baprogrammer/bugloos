@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MultipleSelectComponent } from './components/multiple-select/multiple-select.component';
 import { EditFormComponent } from './pages/forms/edit-form/edit-form.component';
+import { FormListComponent } from './pages/forms/form-list/form-list.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'user/edit', component: EditUserComponent } ,
   { path: 'user/edit/:id', component: EditUserComponent } ,
   { path: 'form/edit', component: EditFormComponent } ,
-  { path: 'form/edit/:id', component: EditFormComponent } 
+  { path: 'form/edit/:id', component: EditFormComponent } ,
+  { path: 'forms', component: FormListComponent } 
 ];
 
 @NgModule({

@@ -1,0 +1,25 @@
+<app-side-navigation></app-side-navigation>
+
+<div class="content right">
+    <app-bread-crumb [routes]="routes" ></app-bread-crumb>
+
+    <div class="form-list rtl full right">
+        <table class="general-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>عنوان</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let form of formList" >
+                    <td>{{form.id}}</td>
+                    <td>{{form.title}}</td>
+                    <td><a routerLink="/form/edit/{{form.id}}">ویرایش</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

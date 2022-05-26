@@ -17,8 +17,11 @@
             </div>
         </div>
         <div class="save-form pointer right">
-            <div class="general-button" (click)="saveForm()" >
+            <div class="general-button right" (click)="saveForm()" >
                 <span>ذخیره</span>
+            </div>
+            <div class="general-button right delete-button red-button" (click)="deleteForm()" >
+                <span>حذف</span>
             </div>
         </div>
     </div>
@@ -67,9 +70,10 @@
                     <option value="col4">25%</option>
                 </select>
             </div>
-            <div class="widget-detail-item full right">
+            <div class="widget-detail-item full right" *ngIf="showAccess">
                 <label for="">سطح دسترسی</label>
-                <app-multiple-select *ngIf="showAccess" [selectedOptions]="currentComponent.permissions"  (getSelectedItemsEvent)="addComponentPermissions($event)" ></app-multiple-select>
+                <app-multiple-select [relatedOptions]="form.permissions"  [selectedOptions]="currentComponent.permissions" 
+                 (getSelectedItemsEvent)="addComponentPermissions($event)"   ></app-multiple-select>
             </div>
             <div class="widget-detail-item full right delete-widget" *ngIf="currentComponent.id != null" >
                 <div class="right red-button full center general-button pointer" (click)="deleteComponent(currentComponent)"  >

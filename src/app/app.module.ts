@@ -17,6 +17,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { WidgetComponent } from './components/widget/widget.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MultipleSelectComponent } from './components/multiple-select/multiple-select.component';
+import { FormListComponent } from './pages/forms/form-list/form-list.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MultipleSelectComponent } from './components/multiple-select/multiple-s
     UserListComponent,
     EditFormComponent,
     WidgetComponent,
-    MultipleSelectComponent
+    MultipleSelectComponent,
+    FormListComponent
   ],
   imports: [
     BrowserModule,

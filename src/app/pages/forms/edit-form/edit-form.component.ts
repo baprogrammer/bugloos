@@ -127,8 +127,6 @@ export class EditFormComponent implements OnInit {
 
   index: number = 0  ;  // ============ primary index - auto increment for preventing similar names
 
-  components: Array<ComponentModel> = []; //======== All the components that dragged to form area
-
   // ====================== dropdown settings and variables ==========================
   
   selectedItems : any = [] ;  //========= this array contains selected components
@@ -138,6 +136,7 @@ export class EditFormComponent implements OnInit {
   
   showAccess : boolean = true ;
 
+  components: Array<ComponentModel> = []; //======== All the components that dragged to form area
   form : any = {id : null , permissions : [] } ; //======= this is the main object that store all the form data
   formList : any = [] ;
 
@@ -151,11 +150,10 @@ export class EditFormComponent implements OnInit {
         let id = params.get("id");
         if(id != null){
           let currentForm = this.arrayService.find(this.formList , id) ;
-          
-          
           if(currentForm.length > 0 ){
             this.form = currentForm[0] ; //======== set user equal to founded result
-            this.components = this.form.components;
+            this.components = this.form.components ;
+            this.index = this.form.lastIndex ;
           }
           else{
             this.router.navigate(['/form/edit']);
@@ -190,7 +188,6 @@ export class EditFormComponent implements OnInit {
       this.components.push(component);
       this.componentClick(component);
       
-      console.log(this.components);
       this.index += 1;
 
     }
@@ -199,22 +196,28 @@ export class EditFormComponent implements OnInit {
 
   componentClick(component: ComponentModel) {
     this.currentComponent = component ;
-    this.showAccess = false ;
-    setTimeout(() => {
-      this.showAccess = true ;
-    }, 20);
+    this.updateShowAccess();
   }
+
+  
 
   deleteComponent(component : any){
     this.arrayService.removeFromArray(this.components , component);
     this.currentComponent = {};
   }
   
-
-  addFormPermissions(newItem: string) {
-    this.formAccess = newItem;
-    this.form.permissions = this.formAccess ;
+  updateShowAccess(){
+    this.showAccess = false ;
+    setTimeout(() => {
+      this.showAccess = true ;
+    }, 20);
   }
+
+  addFormPermissions(newItem: []) {
+    this.form.permissions = newItem ;
+    this.updateShowAccess();
+  }
+
 
   addComponentPermissions(newItem: string) {
     this.componentAccess = newItem;
@@ -232,13 +235,15 @@ export class EditFormComponent implements OnInit {
       localStorage.setItem('id',  JSON.stringify(insertionIndex));  // update form index
       //===============================================
       this.form.id = insertionIndex.formId ;
-      this.form.components = this.components ;
-      
+      this.form.components = this.components;
+      this.form.lastIndex = this.index ;
       this.formList.push(this.form);
       localStorage.setItem('forms',  JSON.stringify(this.formList));
       this.router.navigate(['/form/edit/'+this.form.id]);
     }
     else{
+      this.form.components = this.components;
+      this.form.lastIndex = this.index ;
       this.updateForm();
     }
     this.swalService.success("اطلاعات فرم با موفقیت ذخیره شد " , "")
@@ -247,6 +252,24 @@ export class EditFormComponent implements OnInit {
   updateForm(){
     this.arrayService.updateArray(this.formList , this.form) ;
     localStorage.setItem('forms',  JSON.stringify(this.formList));
+  }
+
+
+  async deleteForm(){
+    let title = "آیا از حذف کردن این فرم اطمینان دارید؟";
+    let text = "شما دیگر قادر به بازگرداندن این فایل نخواهید بود!" ;
+    let confirm = "حذف کن";
+    let cancel = "انصراف";
+    let result = await this.swalService.warning(title , text , cancel , confirm ) ;
+    if(result){
+      this.arrayService.removeFromArray(this.formList , this.form) ;
+      localStorage.setItem('forms',  JSON.stringify(this.formList));
+      let showSuccessMsg = await this.swalService.success("فرم با موفقیت حذف شد" , "");
+      if(showSuccessMsg){
+        this.router.navigate(['/forms']);
+      }
+      
+    }
   }
 
 

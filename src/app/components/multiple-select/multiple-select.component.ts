@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit,Output , EventEmitter , ViewChild } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnInit,Output , EventEmitter , ViewChild, SimpleChange } from '@angular/core';
 import { ArrayOperationService } from 'src/app/services/general/array-operation.service';
 
 @Component({
@@ -19,13 +20,15 @@ export class MultipleSelectComponent implements OnInit {
     { id : 3 , title : "Staff" },
     { id : 4 , title : "Guest" }
   ] ;
+  
 
   isOpen : boolean = false ;
   @Input() selectedOptions : any = [] ;
+  @Input() relatedOptions : any = [] ;
 
-  @Output() getSelectedItemsEvent = new EventEmitter<string>();
+  @Output() getSelectedItemsEvent = new EventEmitter<any>();
 
-  addNewItem(value: any) {
+  addNewItem(value: any) {  //========= this method sends selected items to parent component
     this.getSelectedItemsEvent.emit(value);
   }
 
@@ -36,7 +39,11 @@ export class MultipleSelectComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.relatedOptions.length > 0 ){
+      this.options = JSON.parse(JSON.stringify(this.relatedOptions)) ; // ====== such a dumb job :)
+    }
     for(let option of this.options){
+      option.checked = "" ;
       for(let opt of this.selectedOptions){
         if(option.id == opt.id){
           option.checked = true ;
@@ -44,6 +51,8 @@ export class MultipleSelectComponent implements OnInit {
       }
     }
   }
+
+
 
   updateSelect(event : any , option : any){
     if(event.target.checked){
