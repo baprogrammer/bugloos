@@ -94,7 +94,7 @@ export class EditFormComponent implements OnInit {
       size: 'full'
     },
     {
-      type: 'jdate',
+      type: 'date',
       name: 'date',
       label: 'تاریخ',
       size: 'full'

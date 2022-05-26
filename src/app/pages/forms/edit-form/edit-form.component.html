@@ -61,6 +61,12 @@
                 <label for="">آپشن ها با , جدا شود</label>
                 <input type="text" [(ngModel)]="currentComponent.options" />
             </div>
+            <div class="widget-detail-item full right" >
+                <label class="form-control">
+                    <input type="checkbox" name="checkbox22" [(ngModel)]="currentComponent.required"/>
+                    آیا این فیلد اجباری است ؟
+                </label>
+            </div>
             <div class="widget-detail-item full right">
                 <label for="">سایز</label>
                 <select class="full"  [(ngModel)]="currentComponent.size">

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { MatSnackBar, MatSnackBarModule  } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,10 @@ import { WidgetComponent } from './components/widget/widget.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MultipleSelectComponent } from './components/multiple-select/multiple-select.component';
 import { FormListComponent } from './pages/forms/form-list/form-list.component';
+import { LoginComponent } from './pages/users/login/login.component';
+import { FormsComponent } from './pages/users/forms/forms.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
+import { RadioComponentComponent } from './components/radio-component/radio-component.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { FormListComponent } from './pages/forms/form-list/form-list.component';
     EditFormComponent,
     WidgetComponent,
     MultipleSelectComponent,
-    FormListComponent
+    FormListComponent,
+    LoginComponent,
+    FormsComponent,
+    UserFormComponent,
+    RadioComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +48,7 @@ import { FormListComponent } from './pages/forms/form-list/form-list.component';
     FormsModule ,
     MatTableModule,
     DragDropModule,
+    MatSnackBarModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

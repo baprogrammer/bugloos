@@ -25,13 +25,9 @@
             <div class="form-item-label">
                 <span>نقش</span>
             </div>
-            <div class="form-item-input">
-                <select name="" id="" [(ngModel)]="user.role">
-                    <option value="Administrator">Administrator</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Staff">Staff</option>
-                    <option value="Guest">Guest</option>
-                </select>
+            <div class="form-item-input user-roles right ">
+                <app-multiple-select [selectedOptions]="user.roles" 
+                     (getSelectedItemsEvent)="addUserRoles($event)"   ></app-multiple-select>
             </div>
         </div>
 

@@ -25,6 +25,7 @@ export class MultipleSelectComponent implements OnInit {
   isOpen : boolean = false ;
   @Input() selectedOptions : any = [] ;
   @Input() relatedOptions : any = [] ;
+  @Input() stringOptions : string = "" ;
 
   @Output() getSelectedItemsEvent = new EventEmitter<any>();
 
@@ -39,14 +40,25 @@ export class MultipleSelectComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(this.relatedOptions.length > 0 ){
-      this.options = JSON.parse(JSON.stringify(this.relatedOptions)) ; // ====== such a dumb job :)
+    if(this.stringOptions != ""){
+      let stringOptionsArray = this.stringOptions.split(',');
+      this.options = [];
+      for(let str of stringOptionsArray){
+        let strObject :any = { } ;
+        strObject.title = str ;
+        this.options.push(strObject);
+      }
     }
-    for(let option of this.options){
-      option.checked = "" ;
-      for(let opt of this.selectedOptions){
-        if(option.id == opt.id){
-          option.checked = true ;
+    else{
+      if(this.relatedOptions.length > 0 ){
+        this.options = JSON.parse(JSON.stringify(this.relatedOptions)) ; // ====== such a dumb job :)
+      }
+      for(let option of this.options){
+        option.checked = "" ;
+        for(let opt of this.selectedOptions){
+          if(option.id == opt.id){
+            option.checked = true ;
+          }
         }
       }
     }

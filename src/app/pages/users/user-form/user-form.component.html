@@ -1,0 +1,27 @@
+<div class="full right rtl">
+    <div class="full user-name right">
+        <h1>{{user.name}}</h1>
+    </div>
+
+    <div class="full right user-form">
+        <div class="right user-form-item" [ngClass]="component.size" *ngFor="let component of form.components">
+            <label>{{component.label}}</label>
+            <input type="text" class="full" *ngIf="component.type == 'text'" >
+            <input type="hidden" class="full" *ngIf="component.type == 'hidden'" >
+            <input type="password" class="full" *ngIf="component.type == 'password'" >
+            <input type="number" class="full" *ngIf="component.type == 'number'" >
+            <input type="file" class="full" *ngIf="component.type == 'file'" >
+            <div *ngIf="component.type == 'select' ">
+                <app-multiple-select [stringOptions]="component.options" ></app-multiple-select>
+            </div>
+            <div *ngIf="component.type == 'radio' ">
+                <app-radio-component [stringOptions]="component.options" [name]="component.name" ></app-radio-component>
+            </div>
+            <input type="file" class="full" *ngIf="component.type == 'image'" >
+            <input type="file" class="full" *ngIf="component.type == 'video'" >
+            <input type="date" class="full form-calendar" *ngIf="component.type == 'date'" >
+            <input type="time" class="full" *ngIf="component.type == 'time'" >
+            <input type="color" class="full" *ngIf="component.type == 'color'" >
+        </div>
+    </div>
+</div>

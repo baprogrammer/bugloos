@@ -1,0 +1,25 @@
+.user-name {
+  padding: 20px;
+}
+
+.user-name h1 {
+  font-size: 40px;
+}
+
+.user-form-item {
+  padding: 0 20px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  border: 1px solid #ccc;
+  padding: 5px;
+}

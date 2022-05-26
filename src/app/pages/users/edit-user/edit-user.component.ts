@@ -19,7 +19,7 @@ export class EditUserComponent implements OnInit {
     {"title": "افزودن کاربر" , "link": '/edit-user' } 
   ];
 
-  user : any = {"id": null , "name" : "" , "password":"" , "role": "" } ;
+  user : any = {"id": null , "name" : "" , "password":"" , "roles": [] } ;
   userList : any = [];
   
   
@@ -87,6 +87,8 @@ export class EditUserComponent implements OnInit {
     }
   }
 
-
+  addUserRoles(newItem: []) {
+    this.user.roles = newItem ;
+  }
 
 }

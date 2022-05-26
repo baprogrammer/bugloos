@@ -1,0 +1,40 @@
+h1 {
+  color: #444;
+  margin-top: 80px;
+}
+
+img {
+  margin-top: 30px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.user-login {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.user-login-item input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user-login-item {
+  width: 100%;
+}
+
+a {
+  color: #fff;
+}
+
+.user-login-item.red {
+  margin-top: 30px;
+  display: none;
+  color: red;
+  font-size: 20px;
+}
+
+.user-login-item.show {
+  display: block;
+}

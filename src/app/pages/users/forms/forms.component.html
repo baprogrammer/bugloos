@@ -1,0 +1,31 @@
+<div class="full right rtl">
+    <div class="full user-name right">
+        <h1>{{user.name}}</h1>
+    </div>
+    <div class="forms-list full right">
+        <div class="form-list rtl full right">
+            <table class="general-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>عنوان</th>
+                        <th>عملیات</th>
+                        <th>مجاز بودن</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let form of formList"  >
+                        <td>{{form.id}}</td>
+                        <td>{{form.title}}</td>
+                        <td><a *ngIf="form.hasPrevilage" routerLink="/user/form/{{form.id}}">مشاهده</a>
+                            <span class="not-allowed" *ngIf="!form.hasPrevilage" >مشاهده</span>
+                        </td>
+                        <td *ngIf="form.hasPrevilage">مجاز</td>
+                        <td *ngIf="!form.hasPrevilage">مجاز نیست</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+</div>

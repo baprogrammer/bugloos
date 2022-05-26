@@ -1,0 +1,16 @@
+.user-name {
+  padding: 20px;
+}
+
+.user-name h1 {
+  font-size: 40px;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+/* 
+tr.red {
+  background: #ff00002e;
+} */

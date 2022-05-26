@@ -1,0 +1,26 @@
+<div class="center">
+    
+    <img alt="bugloos  Logo" src="assets/images/logo.svg">
+  
+  
+    <div class="btn-container">
+      
+        <div class="user-login">
+            <div class="user-login-item">
+                <input type="text" placeholder="username" [(ngModel)]="user.name" >
+            </div>
+            <div class="user-login-item">
+                <input type="password" placeholder="password" [(ngModel)]="user.password" >
+            </div>
+            <div class="user-login-item">
+                <div class="general-button pointer" (click)="login()" >
+                    <span>ورود  </span>
+                  </div>
+            </div>
+            <div class="user-login-item red" [ngClass]="{'show' : !isValid }" >
+                <span>اطلاعات وارد شده صحیح نمی باشد</span>
+            </div>
+        </div>
+    </div>
+  
+  </div>
