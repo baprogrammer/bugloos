@@ -3,6 +3,26 @@
 <div class="content right">
     <app-bread-crumb [routes]="routes" ></app-bread-crumb>
 
+    <div class="make-form full rtl right  pointer">
+        <div class="right col4 form-title">
+            <label class="right">عنوان فرم</label>
+            <div class="full form-input">
+                <input type="text" [(ngModel)]="form.title" class="full right">
+            </div>
+        </div>
+        <div class="right half form-access-select">
+            <label class="right">سطح دسترسی فرم</label>
+            <div class="form-access-drop-down full right">
+                <app-multiple-select [selectedOptions]="form.permissions" (getSelectedItemsEvent)="addFormPermissions($event)" ></app-multiple-select>
+            </div>
+        </div>
+        <div class="save-form pointer right">
+            <div class="general-button" (click)="saveForm()" >
+                <span>ذخیره</span>
+            </div>
+        </div>
+    </div>
+
     <div class="full right edit-form">
         <div class="widget-container right" cdkDropList #todoList="cdkDropList" [cdkDropListData]="widgets"
         [cdkDropListConnectedTo]="[doneList ]">
@@ -15,14 +35,14 @@
 
         <div class="widget-action-area" cdkDropList #doneList="cdkDropList" [cdkDropListData]="widgets"
         [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="onDrop($event)">
-
             <div class="full right widget-design">
                 <div class="full right widget-design-item" [ngClass]="component.size" *ngFor="let component of components" cdkDrag>
-                    <app-widget  [id]=component.id [label]="component.label" (click)="componentClick(component)"
-                    [type]="component.type" [size]="component.size" [name]="component.name"></app-widget>
+                    <div  class="widget-design-border" [ngClass]="{'active' : currentComponent.id == component.id }">
+                        <app-widget   [id]=component.id [label]="component.label" (click)="componentClick(component)"
+                        [type]="component.type" [size]="component.size" [name]="component.name"></app-widget>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <div class="left widget-detail rtl">
@@ -47,8 +67,12 @@
                     <option value="col4">25%</option>
                 </select>
             </div>
-            <div class="widget-detail-item full right delete-widget">
-                <div class="right red-button full center general-button pointer"  >
+            <div class="widget-detail-item full right">
+                <label for="">سطح دسترسی</label>
+                <app-multiple-select *ngIf="showAccess" [selectedOptions]="currentComponent.permissions"  (getSelectedItemsEvent)="addComponentPermissions($event)" ></app-multiple-select>
+            </div>
+            <div class="widget-detail-item full right delete-widget" *ngIf="currentComponent.id != null" >
+                <div class="right red-button full center general-button pointer" (click)="deleteComponent(currentComponent)"  >
                     <span>حذف</span>
                 </div>
             </div>

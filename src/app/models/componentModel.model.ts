@@ -8,4 +8,5 @@ export class ComponentModel {
     isSelect : boolean = false;
     value : string = "";
     options : string = "" ;
+    permissions : any = []
 }

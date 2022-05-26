@@ -22,6 +22,7 @@ export class EditUserComponent implements OnInit {
   user : any = {"id": null , "name" : "" , "password":"" , "role": "" } ;
   userList : any = [];
   
+  
 
   ngOnInit(): void {
     this.userList = JSON.parse(localStorage.getItem('users') || '[]')   ; 

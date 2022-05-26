@@ -1,0 +1,27 @@
+<div class="full right select-container ltr " [ngClass]="isOpen  ? 'open' : 'close'  " #dropdownclose >
+    <div class="select-header full right">
+        <div class="header-control" (click)="toggleDropDown()" >
+            <div class="select-title" *ngIf="selectedOptions.length == 0">
+                <span>{{title}}</span>
+            </div>
+            <div class="select-arrow">
+                <span class="select-arrow-icon"></span>
+            </div>
+        </div>
+        <div class="header-control full right" *ngIf="selectedOptions.length > 0"  (click)="toggleDropDown()" >
+            <div class="selected-option" [ngClass]="dir == 'ltr' ? 'left' : 'right' "  *ngFor="let selectedOption of selectedOptions" >
+                <span>{{selectedOption.title}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="select-options full right">
+        <div class="option full right">
+            <div class="checkbox full right" *ngFor="let option of options"  >
+                <label class="form-control">
+                    <input type="checkbox" name="checkbox" [checked]="option.checked"  (change)="updateSelect($event , option)" />
+                    {{option.title}}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

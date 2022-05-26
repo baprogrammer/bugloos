@@ -166,3 +166,22 @@ input {
   max-width: 200px;
   border: 3px dotted red;
 }
+
+.active .component {
+  background: #241e462e !important;
+}
+
+/* =========== fix dropdown module =================================== */
+.selected-item-container .selected-item {
+  max-width: 140px !important;
+}
+
+.dropdown-multiselect__caret {
+  top: 10px !important;
+}
+
+.dropdown-multiselect--active .dropdown-multiselect__caret {
+  top: -3px !important;
+}
+
+/* =========== end of fix dropdown module =================================== */

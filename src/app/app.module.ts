@@ -15,6 +15,8 @@ import { MatTableModule } from '@angular/material/table';
 import { EditFormComponent } from './pages/forms/edit-form/edit-form.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { WidgetComponent } from './components/widget/widget.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MultipleSelectComponent } from './components/multiple-select/multiple-select.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { WidgetComponent } from './components/widget/widget.component';
     BreadCrumbComponent,
     UserListComponent,
     EditFormComponent,
-    WidgetComponent
+    WidgetComponent,
+    MultipleSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { WidgetComponent } from './components/widget/widget.component';
     BrowserAnimationsModule,
     FormsModule ,
     MatTableModule,
-    DragDropModule
+    DragDropModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

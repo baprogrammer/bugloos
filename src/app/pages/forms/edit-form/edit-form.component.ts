@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray  } from '@angular/cdk/drag-drop';
 import { ComponentModel } from 'src/app/models/componentModel.model';
+import { ArrayOperationService } from 'src/app/services/general/array-operation.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SwalService } from 'src/app/services/messaging/sweetalert/swal.service';
+
 
 @Component({
   selector: 'app-edit-form',
@@ -14,6 +18,7 @@ export class EditFormComponent implements OnInit {
     {"title": "ویرایش فرم" , "link": '/edit-form' } 
   ];
 
+  //=========== list of draggable widgets - in app you can find them in the right sidebar
   widgets:  any =
   [
     {
@@ -51,7 +56,9 @@ export class EditFormComponent implements OnInit {
       type: 'radio',
       name: 'radio',
       label: 'رادیو',
-      size: 'full'
+      size: 'full',
+      isSelect: true,
+      options : ""
     },
     {
       type: 'select',
@@ -114,27 +121,49 @@ export class EditFormComponent implements OnInit {
       label: 'time',
       size: 'full'
     }
-    ,
-    {
-      type: 'dateTime',
-      name: 'dateTime',
-      label: 'dateTime',
-      size: 'full'
-    }
-    
-
-
   ];
 
-  currentComponent : any = { } ;  //======== current selected component
+  currentComponent : any = { permissions : [] } ;  //======== current selected component - if user select any component this variable will be initialized
 
   index: number = 0  ;  // ============ primary index - auto increment for preventing similar names
 
   components: Array<ComponentModel> = []; //======== All the components that dragged to form area
 
-  constructor() { }
+  // ====================== dropdown settings and variables ==========================
+  
+  selectedItems : any = [] ;  //========= this array contains selected components
+  
+  formAccess : any = [] ; // ========= this array contain form permissions
+  componentAccess : any = [] ; // ========= this array contain component permissions
+  
+  showAccess : boolean = true ;
+
+  form : any = {id : null , permissions : [] } ; //======= this is the main object that store all the form data
+  formList : any = [] ;
+
+  constructor(private arrayService : ArrayOperationService , private router : Router ,
+     private swalService : SwalService , private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.formList = JSON.parse(localStorage.getItem('forms') || '[]')   ; 
+    this.route.paramMap.subscribe(
+      params => {
+        let id = params.get("id");
+        if(id != null){
+          let currentForm = this.arrayService.find(this.formList , id) ;
+          
+          
+          if(currentForm.length > 0 ){
+            this.form = currentForm[0] ; //======== set user equal to founded result
+            this.components = this.form.components;
+          }
+          else{
+            this.router.navigate(['/form/edit']);
+          }
+        }
+        
+      });
+    
   }
 
 
@@ -170,9 +199,55 @@ export class EditFormComponent implements OnInit {
 
   componentClick(component: ComponentModel) {
     this.currentComponent = component ;
+    this.showAccess = false ;
+    setTimeout(() => {
+      this.showAccess = true ;
+    }, 20);
+  }
+
+  deleteComponent(component : any){
+    this.arrayService.removeFromArray(this.components , component);
+    this.currentComponent = {};
   }
   
 
+  addFormPermissions(newItem: string) {
+    this.formAccess = newItem;
+    this.form.permissions = this.formAccess ;
+  }
+
+  addComponentPermissions(newItem: string) {
+    this.componentAccess = newItem;
+    this.currentComponent.permissions = this.componentAccess ;
+  }
+
+  saveForm(){
+    if(this.form.id == null){ 
+      //=========== find last index and assign to the new user
+      let insertionIndex = JSON.parse(localStorage.getItem('id') || '{}') || {}  ;
+      if(insertionIndex.formId == null){
+        insertionIndex.formId = 0 ;
+      }
+      insertionIndex.formId = insertionIndex.formId + 1 ;
+      localStorage.setItem('id',  JSON.stringify(insertionIndex));  // update form index
+      //===============================================
+      this.form.id = insertionIndex.formId ;
+      this.form.components = this.components ;
+      
+      this.formList.push(this.form);
+      localStorage.setItem('forms',  JSON.stringify(this.formList));
+      this.router.navigate(['/form/edit/'+this.form.id]);
+    }
+    else{
+      this.updateForm();
+    }
+    this.swalService.success("اطلاعات فرم با موفقیت ذخیره شد " , "")
+  }
+
+  updateForm(){
+    this.arrayService.updateArray(this.formList , this.form) ;
+    localStorage.setItem('forms',  JSON.stringify(this.formList));
+  }
 
 
 }

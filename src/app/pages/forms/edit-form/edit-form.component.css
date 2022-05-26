@@ -29,7 +29,7 @@
   border-top: 7px solid rgb(213, 212, 196);
   background: #fff;
   border-right: 2px solid rgb(213, 212, 196);
-  height: 800px;
+  height: 835px;
   width: 300px;
   padding: 10px;
 }
@@ -67,7 +67,7 @@
 
 .widget-action-area {
   width: calc(100% - 600px);
-  height: 800px;
+  min-height: 835px;
   float: right;
   background: rgb(213, 212, 196);
   padding: 10px;
@@ -76,4 +76,37 @@
 
 .widget-design-item {
   padding: 2px;
+}
+
+.make-form {
+  color: #444;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 0 15px;
+}
+
+.make-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input input {
+  line-height: 40px;
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  padding: 0 5px;
+  font-size: 20px;
+}
+
+.form-title {
+  padding: 0 5px;
+}
+
+.form-access-drop-down {
+  background: #fff;
+}
+
+.save-form {
+  margin-top: 30px;
+  margin-right: 10px;
 }
