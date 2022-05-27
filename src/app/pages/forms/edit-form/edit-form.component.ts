@@ -132,7 +132,6 @@ export class EditFormComponent implements OnInit {
   
   selectedItems : any = [] ;  //========= this array contains selected components
   
-  formAccess : any = [] ; // ========= this array contain form permissions
   componentAccess : any = [] ; // ========= this array contain component permissions
   
   showAccess : boolean = true ;
@@ -145,14 +144,14 @@ export class EditFormComponent implements OnInit {
      private swalService : SwalService , private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.formList = JSON.parse(localStorage.getItem('forms') || '[]')   ; 
+    this.formList = JSON.parse(localStorage.getItem('forms') || '[]')   ; //========== get forms from localstorage
     this.route.paramMap.subscribe(
       params => {
         let id = params.get("id");
         if(id != null){
           let currentForm = this.arrayService.find(this.formList , id) ;
           if(currentForm.length > 0 ){
-            this.form = currentForm[0] ; //======== set user equal to founded result
+            this.form = currentForm[0] ; //======== set form equal to founded result
             this.components = this.form.components ;
             this.index = this.form.lastIndex ;
           }
@@ -167,10 +166,10 @@ export class EditFormComponent implements OnInit {
 
 
 
-
-  onDrop(event: CdkDragDrop<string[]>) {
+//==================== this method fire when any of widgets drag and dropped into droplist area
+  onDrop(event: CdkDragDrop<string[]>) {  
     if (event.previousContainer === event.container) {
-      moveItemInArray(this.components,
+      moveItemInArray(this.components,  //======= this method change the draggable items order
         event.previousIndex,
         event.currentIndex);
     }
@@ -193,41 +192,51 @@ export class EditFormComponent implements OnInit {
 
     }
   }
+  //==========================================================================================
 
-
+//============================= when the component clicked this function change current component and set it to clicked component
   componentClick(component: ComponentModel) {
     this.currentComponent = component ;
-    this.updateShowAccess();
+    this.updateShowAccess();  
   }
+  //===========================================================================================
 
   
-
+//=========================== this method delete selected component - direct remove without confirmation
   deleteComponent(component : any){
     this.arrayService.removeFromArray(this.components , component);
     this.currentComponent = {};
   }
+  //============================================================================================
   
+  //======================== after component click this method recreate permission component
   updateShowAccess(){
     this.showAccess = false ;
     setTimeout(() => {
       this.showAccess = true ;
     }, 20);
   }
+  //=============================================================================================
 
+  //======================= this is output method from child component that add permissions to form
   addFormPermissions(newItem: []) {
     this.form.permissions = newItem ;
     this.updateShowAccess();
   }
+  //============================================================================================
 
-
+//======================= this is output method from child component that add permissions to component
   addComponentPermissions(newItem: string) {
     this.componentAccess = newItem;
     this.currentComponent.permissions = this.componentAccess ;
   }
+//============================================================================================
 
+
+//====================== this method create and update the form
   saveForm(){
     if(this.form.id == null){ 
-      //=========== find last index and assign to the new user
+      //=========== find last index and assign to the new form - unique identifire
       let insertionIndex = JSON.parse(localStorage.getItem('id') || '{}') || {}  ;
       if(insertionIndex.formId == null){
         insertionIndex.formId = 0 ;
@@ -249,11 +258,14 @@ export class EditFormComponent implements OnInit {
     }
     this.swalService.success("اطلاعات فرم با موفقیت ذخیره شد " , "")
   }
+  //============================================================================================
 
+  //============================== this method update the formlist array and set to localstorage - update the form
   updateForm(){
     this.arrayService.updateArray(this.formList , this.form) ;
     localStorage.setItem('forms',  JSON.stringify(this.formList));
   }
+  //=============================================================================================
 
 
   async deleteForm(){

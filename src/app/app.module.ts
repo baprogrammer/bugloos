@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
-import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
+import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { EditFormComponent } from './pages/forms/edit-form/edit-form.component';

@@ -20,7 +20,7 @@
             <div class="general-button right" (click)="saveForm()" >
                 <span>ذخیره</span>
             </div>
-            <div class="general-button right delete-button red-button" (click)="deleteForm()" >
+            <div class="general-button right delete-button red-button" (click)="deleteForm()" *ngIf="form.id != null"  >
                 <span>حذف</span>
             </div>
         </div>
