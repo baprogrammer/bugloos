@@ -79,6 +79,10 @@ li {
   cursor: pointer;
 }
 
+.not-allowed {
+  cursor: not-allowed;
+}
+
 html,
 body {
   background: #efefef;
@@ -211,3 +215,7 @@ th {
 }
 
 /*======================== end of snackbar =========================== */
+
+.not-valid input {
+  border: 1px solid red !important;
+}

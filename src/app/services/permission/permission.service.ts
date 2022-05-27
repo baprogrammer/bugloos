@@ -19,6 +19,20 @@ export class PermissionService {
       }
       return user ;
   }
+
+
+  checkComponentPermission(user : any , component : any ){
+    user.hasPrevilage = false ;
+    for(let permission of component.permissions){
+      for(let role of user.roles){
+        if(role.id == permission.id){
+          user.hasPrevilage = true ;
+          break;
+        }
+      }
+    }
+    return user ;
+  }
   
 
 

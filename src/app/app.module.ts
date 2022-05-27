@@ -22,6 +22,7 @@ import { LoginComponent } from './pages/users/login/login.component';
 import { FormsComponent } from './pages/users/forms/forms.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { RadioComponentComponent } from './components/radio-component/radio-component.component';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { RadioComponentComponent } from './components/radio-component/radio-comp
     MatTableModule,
     DragDropModule,
     MatSnackBarModule,
+    CKEditorModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

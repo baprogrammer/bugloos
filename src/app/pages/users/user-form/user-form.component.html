@@ -4,24 +4,40 @@
     </div>
 
     <div class="full right user-form">
-        <div class="right user-form-item" [ngClass]="component.size" *ngFor="let component of form.components">
-            <label>{{component.label}}</label>
-            <input type="text" class="full" *ngIf="component.type == 'text'" >
-            <input type="hidden" class="full" *ngIf="component.type == 'hidden'" >
-            <input type="password" class="full" *ngIf="component.type == 'password'" >
-            <input type="number" class="full" *ngIf="component.type == 'number'" >
-            <input type="file" class="full" *ngIf="component.type == 'file'" >
-            <div *ngIf="component.type == 'select' ">
-                <app-multiple-select [stringOptions]="component.options" ></app-multiple-select>
+        <div class="user-form-item-container" [ngClass]="{'not-valid' : component.isNotValid }" *ngFor="let component of form.components">
+            <div class="right user-form-item" [ngClass]="component.size"  >
+                <label>{{component.label}}</label>
+                <input type="text"  class="full" [(ngModel)]="component.value" *ngIf="component.type == 'text'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " >
+                <input type="hidden" class="full" *ngIf="component.type == 'hidden'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " >
+                <input type="password" class="full" *ngIf="component.type == 'password'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " >
+                <input type="number" class="full" *ngIf="component.type == 'number'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <input type="file" class="full" *ngIf="component.type == 'file'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <div *ngIf="component.type == 'select' ">
+                    <app-multiple-select [stringOptions]="component.options" ></app-multiple-select>
+                </div>
+                <div *ngIf="component.type == 'radio' ">
+                    <app-radio-component [stringOptions]="component.options" [name]="component.name" ></app-radio-component>
+                </div>
+                <input type="file" class="full" *ngIf="component.type == 'image'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <input type="file" class="full" *ngIf="component.type == 'video'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " >
+                <input type="file" class="full" *ngIf="component.type == 'audio'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " >
+                <input type="date" class="full form-calendar" *ngIf="component.type == 'date'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <input type="time" class="full" *ngIf="component.type == 'time'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <input type="color" class="full" *ngIf="component.type == 'color'" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } ">
+                <textarea class="full" *ngIf="component.type == 'textarea' " [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } "></textarea>
+                <div class="full right checkbox" *ngIf="component.type == 'check' " >
+                    <label class="form-control">
+                        <input type="checkbox" name="checkbox" [required]="component.required" [disabled]="!component.hasPrevilage" [ngClass]="{'not-allowed' : !component.hasPrevilage } " />
+                    </label>
+                </div>
+                <ckeditor data="" class="rtl"  *ngIf="component.type == 'editor' " [readOnly]=" true ? !component.hasPrevilage : false "  [ngClass]="{'not-allowed' : !component.hasPrevilage } " ></ckeditor>
+
             </div>
-            <div *ngIf="component.type == 'radio' ">
-                <app-radio-component [stringOptions]="component.options" [name]="component.name" ></app-radio-component>
+        </div>
+        <div class="user-form-button full right">
+            <div class="general-button right pointer" (click)="sendForm()" >
+                <span>ارسال فرم</span>
             </div>
-            <input type="file" class="full" *ngIf="component.type == 'image'" >
-            <input type="file" class="full" *ngIf="component.type == 'video'" >
-            <input type="date" class="full form-calendar" *ngIf="component.type == 'date'" >
-            <input type="time" class="full" *ngIf="component.type == 'time'" >
-            <input type="color" class="full" *ngIf="component.type == 'color'" >
         </div>
     </div>
 </div>

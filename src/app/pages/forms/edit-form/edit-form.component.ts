@@ -25,7 +25,8 @@ export class EditFormComponent implements OnInit {
       type: 'text',
       name: 'textbox',
       label: 'تکست باکس',
-      size: 'half'
+      size: 'half',
+      regex : ''
 
     },
     {

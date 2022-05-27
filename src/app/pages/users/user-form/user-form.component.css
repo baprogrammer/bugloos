@@ -23,3 +23,7 @@ input[type="number"] {
   border: 1px solid #ccc;
   padding: 5px;
 }
+
+.user-form-button {
+  padding: 20px;
+}

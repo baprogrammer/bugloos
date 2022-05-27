@@ -61,6 +61,15 @@
                 <label for="">آپشن ها با , جدا شود</label>
                 <input type="text" [(ngModel)]="currentComponent.options" />
             </div>
+            <div class="widget-detail-item full right" *ngIf="currentComponent.type == 'text' ">
+                <label for="">اعتبار سنجی</label>
+                <select [(ngModel)]="currentComponent.regex" class="full">
+                    <option value="number">عددی</option>
+                    <option value="text">متنی</option>
+                    <option value="all">هم عدد و هم متن</option>
+                    <option value="phone">شماره تلفن</option>
+                </select>
+            </div>
             <div class="widget-detail-item full right" >
                 <label class="form-control">
                     <input type="checkbox" name="checkbox22" [(ngModel)]="currentComponent.required"/>
